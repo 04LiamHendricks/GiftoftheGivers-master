@@ -1,3 +1,35 @@
 @model Donation
 @{ ViewData["Title"] = "Donation certificate"; }
-<div class="card form-card border-success"><div class="card-body p-4"><h1 class="text-success">Donation confirmed</h1><p>Thank you for your generosity. This is a prototype certificate, not an official tax document.</p><dl class="row"><dt class="col-sm-5">Certificate number</dt><dd class="col-sm-7">@Model.TaxCertificateNumber</dd><dt class="col-sm-5">Donor</dt><dd class="col-sm-7">@Model.DonorName</dd><dt class="col-sm-5">Amount</dt><dd class="col-sm-7">@Model.Currency @Model.Amount.ToString("N2")</dd><dt class="col-sm-5">Donation type</dt><dd class="col-sm-7">@Model.DonationType</dd><dt class="col-sm-5">Date</dt><dd class="col-sm-7">@Model.DonationDate.ToString("dd MMMM yyyy")</dd></dl><button class="btn btn-outline-primary" onclick="window.print()">Print certificate</button></div></div>
+
+<section class="page-section">
+    <div class="container">
+        <div class="form-shell">
+            <div class="card form-card certificate">
+                <div class="card-body">
+                    <div class="text-center">
+                        <div class="success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+                        <h1>Donation confirmed</h1>
+                        <p class="text-muted">Thank you for your generosity. This is a prototype certificate, not an official tax document.</p>
+                    </div>
+
+                    <div class="cert-amount">
+                        <small>Amount donated</small>
+                        <strong>@Model.Currency @Model.Amount.ToString("N2")</strong>
+                    </div>
+
+                    <dl class="mb-4">
+                        <div class="cert-row"><dt>Certificate number</dt><dd>@Model.TaxCertificateNumber</dd></div>
+                        <div class="cert-row"><dt>Donor</dt><dd>@Model.DonorName</dd></div>
+                        <div class="cert-row"><dt>Donation type</dt><dd>@Model.DonationType</dd></div>
+                        <div class="cert-row"><dt>Date</dt><dd>@Model.DonationDate.ToString("dd MMMM yyyy")</dd></div>
+                    </dl>
+
+                    <div class="d-flex flex-wrap gap-2 justify-content-center no-print">
+                        <button class="btn btn-primary" onclick="window.print()">Print certificate</button>
+                        <a class="btn btn-ghost" asp-controller="Home" asp-action="Index">Back to home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

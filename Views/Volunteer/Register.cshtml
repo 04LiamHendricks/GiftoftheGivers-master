@@ -1,3 +1,40 @@
 @model Volunteer
 @{ ViewData["Title"] = "Volunteer"; }
-<div class="card form-card"><div class="card-body p-4"><h1>Volunteer registration</h1><form method="post"><div asp-validation-summary="ModelOnly" class="text-danger"></div><label asp-for="FullName"></label><input asp-for="FullName" class="form-control"/><label asp-for="Skills" class="mt-3"></label><input asp-for="Skills" class="form-control" placeholder="e.g. First Aid, logistics"/><label asp-for="Availability" class="mt-3"></label><select asp-for="Availability" class="form-select"><option>Weekdays</option><option>Weekends</option><option>Evenings</option><option>Flexible</option><option>On-call</option></select><label asp-for="Email" class="mt-3"></label><input asp-for="Email" class="form-control"/><button class="btn btn-success mt-4">Register interest</button></form></div></div>
+
+<section class="page-section">
+    <div class="container">
+        <div class="form-shell">
+            <div class="form-intro">
+                <span class="section-eyebrow">Volunteer</span>
+                <h1>Volunteer registration</h1>
+                <p>Tell us how you would like to help and when you are available.</p>
+            </div>
+            <div class="card form-card">
+                <div class="card-body">
+                    <form method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <label asp-for="FullName"></label>
+                        <input asp-for="FullName" class="form-control" />
+                        <span asp-validation-for="FullName" class="text-danger"></span>
+
+                        <label asp-for="Skills" class="mt-3"></label>
+                        <input asp-for="Skills" class="form-control" placeholder="e.g. First Aid, logistics" />
+                        <span asp-validation-for="Skills" class="text-danger"></span>
+
+                        <label asp-for="Availability" class="mt-3"></label>
+                        <select asp-for="Availability" class="form-select">
+                            <option>Weekdays</option><option>Weekends</option><option>Evenings</option><option>Flexible</option><option>On-call</option>
+                        </select>
+
+                        <label asp-for="Email" class="mt-3"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+
+                        <button class="btn btn-primary btn-lg w-100 mt-4">Register interest</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

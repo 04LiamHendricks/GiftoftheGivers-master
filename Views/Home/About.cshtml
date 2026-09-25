@@ -1,1 +1,48 @@
-@{ViewData["Title"]="About";}<h1>About Gift of the Givers</h1><p class="lead">This professional prototype demonstrates how donors, volunteers, and employees can work together in one system.</p>
+@{ ViewData["Title"] = "About"; }
+
+<section class="page-header">
+    <div class="container">
+        <span class="section-eyebrow" style="color:var(--gg-accent)">About us</span>
+        <h1>About Gift of the Givers</h1>
+        <p>This professional prototype demonstrates how donors, volunteers, and employees can work together in one system.</p>
+    </div>
+</section>
+
+<section class="page-section">
+    <div class="container">
+        <div class="row g-4 overlap">
+            <div class="col-md-4">
+                <div class="card h-100 feature-card"><div class="card-body">
+                    <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg></div>
+                    <h2>For donors</h2>
+                    <p>Give once or on a schedule, choose your currency, and receive a donation certificate straight away.</p>
+                </div></div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 feature-card"><div class="card-body">
+                    <div class="icon-tile amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+                    <h2>For volunteers</h2>
+                    <p>Register your skills and availability so the right people are ready when relief is needed.</p>
+                </div></div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 feature-card"><div class="card-body">
+                    <div class="icon-tile ink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg></div>
+                    <h2>For our team</h2>
+                    <p>Employees review volunteer sign-ups and publish relief project updates from one dashboard.</p>
+                </div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="page-section pt-0">
+    <div class="container">
+        <div class="cta-band">
+            <h2>Join the Gift of the Givers community</h2>
+            <p>Give, volunteer, or simply get in touch. We would love to hear from you.</p>
+            <a class="btn btn-warning btn-lg me-2" asp-controller="Donate" asp-action="Index">Donate</a>
+            <a class="btn btn-outline-light btn-lg" asp-controller="Volunteer" asp-action="Register">Volunteer</a>
+        </div>
+    </div>
+</section>

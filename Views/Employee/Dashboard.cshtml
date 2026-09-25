@@ -1,1 +1,94 @@
-@{ViewData["Title"]="Employee dashboard";var volunteers=ViewBag.Volunteers as List<Volunteer>;var updates=ViewBag.Updates as List<ProjectUpdate>;}<h1>Employee dashboard</h1><div class="row g-4"><div class="col-lg-5"><div class="card"><div class="card-body"><h2>Post a relief update</h2><form asp-action="PostUpdate" method="post"><label>Project name</label><input name="ProjectName" class="form-control" required/><label class="mt-3">Update</label><textarea name="UpdateText" class="form-control" required></textarea><button class="btn btn-primary mt-3">Publish update</button></form></div></div></div><div class="col-lg-7"><div class="card"><div class="card-body"><h2>Volunteer sign-ups</h2><table class="table"><thead><tr><th>Name</th><th>Skills</th><th>Availability</th></tr></thead><tbody>@foreach(var v in volunteers ?? []){<tr><td>@v.FullName</td><td>@v.Skills</td><td>@v.Availability</td></tr>}</tbody></table></div></div></div></div><div class="card mt-4"><div class="card-body"><h2>Published updates</h2>@foreach(var u in updates ?? []){<article class="border-bottom py-2"><strong>@u.ProjectName</strong><p class="mb-0">@u.UpdateText</p><small>@u.PostedDate.ToLocalTime().ToString("dd MMM yyyy") · @u.PostedBy</small></article>}</div></div>
+@{
+    ViewData["Title"] = "Employee dashboard";
+    var volunteers = ViewBag.Volunteers as List<Volunteer>;
+    var updates = ViewBag.Updates as List<ProjectUpdate>;
+}
+
+<section class="page-header">
+    <div class="container">
+        <span class="section-eyebrow" style="color:var(--gg-accent)">Staff area</span>
+        <h1>Employee dashboard</h1>
+        <p>Review volunteer sign-ups and publish updates on relief projects.</p>
+    </div>
+</section>
+
+<section class="page-section pt-0">
+    <div class="container">
+        <div class="row g-4 overlap">
+            <div class="col-sm-6">
+                <div class="card stat-card"><div class="card-body">
+                    <div class="stat-label">Volunteer sign-ups</div>
+                    <div class="stat-value">@(volunteers?.Count ?? 0)</div>
+                </div></div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card stat-card"><div class="card-body">
+                    <div class="stat-label">Published updates</div>
+                    <div class="stat-value">@(updates?.Count ?? 0)</div>
+                </div></div>
+            </div>
+        </div>
+
+        <div class="row g-4 mt-1">
+            <div class="col-lg-5">
+                <div class="card h-100"><div class="card-body">
+                    <h2 class="mb-4">Post a relief update</h2>
+                    <form asp-action="PostUpdate" method="post">
+                        <label>Project name</label>
+                        <input name="ProjectName" class="form-control" required />
+                        <label class="mt-3">Update</label>
+                        <textarea name="UpdateText" class="form-control" required></textarea>
+                        <button class="btn btn-primary mt-4">Publish update</button>
+                    </form>
+                </div></div>
+            </div>
+            <div class="col-lg-7">
+                <div class="card h-100 overflow-hidden">
+                    <div class="card-body pb-3"><h2 class="m-0">Volunteer sign-ups</h2></div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead><tr><th>Name</th><th>Skills</th><th>Availability</th></tr></thead>
+                            <tbody>
+                                @foreach (var v in volunteers ?? [])
+                                {
+                                    <tr>
+                                        <td><span class="avatar">@(string.IsNullOrWhiteSpace(v.FullName) ? "?" : v.FullName.Trim()[0].ToString().ToUpper())</span>@v.FullName</td>
+                                        <td>@v.Skills</td>
+                                        <td><span class="pill">@v.Availability</span></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    @if (volunteers == null || volunteers.Count == 0)
+                    {
+                        <div class="empty-state">No volunteer sign-ups yet.</div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-4"><div class="card-body">
+            <h2 class="mb-4">Published updates</h2>
+            @if (updates == null || updates.Count == 0)
+            {
+                <div class="empty-state">No updates published yet.</div>
+            }
+            else
+            {
+                <ul class="timeline">
+                    @foreach (var u in updates)
+                    {
+                        <li>
+                            <article>
+                                <strong class="text-dark">@u.ProjectName</strong>
+                                <p class="mb-1">@u.UpdateText</p>
+                                <div class="meta">@u.PostedDate.ToLocalTime().ToString("dd MMM yyyy") · @u.PostedBy</div>
+                            </article>
+                        </li>
+                    }
+                </ul>
+            }
+        </div></div>
+    </div>
+</section>

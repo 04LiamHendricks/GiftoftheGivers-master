@@ -1,3 +1,17 @@
 @model Volunteer
 @{ ViewData["Title"] = "Registration confirmed"; }
-<div class="card form-card border-success"><div class="card-body p-4"><h1 class="text-success">Thank you, @Model.FullName!</h1><p>Your volunteer registration has been received. Our team will review it and contact you soon.</p><a class="btn btn-primary" asp-controller="Home" asp-action="Index">Return home</a></div></div>
+
+<section class="page-section">
+    <div class="container">
+        <div class="form-shell">
+            <div class="card form-card text-center">
+                <div class="card-body">
+                    <div class="success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+                    <h1>Thank you, @Model.FullName!</h1>
+                    <p class="text-muted mt-3">Your volunteer registration has been received. Our team will review it and contact you soon.</p>
+                    <a class="btn btn-primary mt-3" asp-controller="Home" asp-action="Index">Return home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
